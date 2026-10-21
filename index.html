@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Baru Tattoo · Fine line & Botanic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#F5F2EC;
+    --ink:#111111;
+    --warm:#8A857D;
+    --accent:#8B2E2E;
+    --line:rgba(17,17,17,.14);
+    --ph:#E6E2DA;
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --sans:"Inter", system-ui, -apple-system, sans-serif;
+    --gutter:24px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{
+    overflow-x:clip;
+    background:var(--bone);color:var(--ink);
+    font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+
+  /* ---------- Botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+    padding:15px 26px;border:1px solid var(--accent);background:var(--accent);color:var(--bone);
+    transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease);
+  }
+  .btn:hover{background:transparent;color:var(--accent)}
+  .btn--sm{padding:10px 16px;font-size:10px}
+  .btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn--ghost:hover{background:var(--ink);color:var(--bone)}
+  .btn svg{width:14px;height:14px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;inset:0 0 auto 0;z-index:20;
+    background:rgba(245,242,236,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;transition:border-color .5s var(--ease);
+  }
+  header.scrolled{border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:.02em}
+  .logo i{font-style:italic;font-weight:300}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;min-height:100svh;
+    display:flex;align-items:center;padding:104px 0 56px;overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+  .eyebrow{
+    font-size:10px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--warm);
+    display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--warm)}
+  .hero h1{
+    font-family:var(--serif);font-weight:300;font-size:clamp(50px,14vw,112px);
+    line-height:.95;letter-spacing:-.015em;margin:20px 0 18px;
+  }
+  .hero h1 em{font-style:italic;font-weight:300}
+  .hero .sub{
+    font-family:var(--serif);font-style:italic;font-size:20px;color:var(--warm);margin-bottom:30px;
+  }
+  .hero-media{position:relative;justify-self:center;width:82%;max-width:420px}
+  .arch{
+    position:relative;aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden;
+    border:1px solid var(--ink);padding:8px;background:var(--bone);
+  }
+  .arch .ph{border-radius:999px 999px 0 0}
+  .hero-media .stamp{
+    position:absolute;right:-10px;bottom:22px;background:var(--bone);border:1px solid var(--ink);
+    font-size:9px;letter-spacing:.3em;text-transform:uppercase;padding:8px 12px;
+  }
+  .botanic{position:absolute;pointer-events:none;color:var(--ink)}
+  .botanic path,.botanic circle,.botanic ellipse{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+  .botanic--hero{right:-38px;top:-56px;width:150px;height:auto;transform:rotate(14deg)}
+  .botanic--hero-l{left:-30px;bottom:-30px;width:110px;transform:scaleX(-1) rotate(-12deg)}
+  .scroll-cue{
+    position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+    width:1px;height:46px;background:var(--line);overflow:hidden;
+  }
+  .scroll-cue::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:var(--ink);animation:cue 2.4s var(--ease) infinite}
+  @keyframes cue{to{top:46px}}
+
+  /* Placeholders de imagen */
+  .ph{position:relative;width:100%;height:100%;background:var(--ph);overflow:hidden}
+  .ph::after{
+    content:"FOTO";position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+    font-size:10px;letter-spacing:.4em;color:var(--warm);font-weight:500;
+  }
+  .ph::before{
+    content:"";position:absolute;inset:12px;border:1px solid rgba(138,133,125,.35);display:none;
+  }
+  .ph.missing::after,.ph.missing::before{display:flex}
+  .ph.missing img{display:none}
+  .arch .ph::before{border-radius:999px 999px 0 0}
+
+  /* ---------- Secciones ---------- */
+  section{position:relative}
+  .section{padding:96px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .sec-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(38px,9vw,64px);line-height:1}
+  .sec-head h2 em{font-style:italic}
+  .sec-head .num{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--warm)}
+
+  /* Galería */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding-bottom:28px}
+  .g-item{position:relative;aspect-ratio:3/4;overflow:hidden}
+  .g-item:nth-child(2n){transform:translateY(28px)}
+  .g-item .ph img{transition:transform 1.2s var(--ease),filter 1.2s var(--ease);filter:grayscale(1) contrast(1.05)}
+  .g-item:hover .ph img{transform:scale(1.05);filter:grayscale(0)}
+  .g-item .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:14px;
+    font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--bone);
+    background:linear-gradient(transparent,rgba(17,17,17,.55));
+    opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease);
+  }
+  .g-item:hover .cap{opacity:1;transform:none}
+  .g-item.has-ph .cap{color:var(--ink);background:none}
+  .g-item::after{content:"";position:absolute;inset:0;border:1px solid var(--ink);opacity:0;transition:opacity .6s var(--ease);pointer-events:none}
+  .g-item:hover::after{opacity:1}
+
+  /* Pasos */
+  .steps-sec{background:var(--ink);color:var(--bone);overflow:hidden}
+  .steps-sec .sec-head{border-bottom-color:rgba(245,242,236,.18)}
+  .steps-sec .num{color:var(--warm)}
+  .steps{list-style:none;display:grid;grid-template-columns:1fr;gap:0}
+  .step{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:28px 0;border-bottom:1px solid rgba(245,242,236,.18)}
+  .step:last-child{border-bottom:0}
+  .step .n{font-family:var(--serif);font-style:italic;font-weight:300;font-size:44px;line-height:1;color:var(--warm)}
+  .step h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin-bottom:6px}
+  .step p{color:rgba(245,242,236,.66);font-size:14px;max-width:34ch}
+  .botanic--steps{right:-44px;bottom:-70px;width:130px;transform:rotate(-18deg);color:var(--bone);opacity:.35}
+
+  /* Cierre */
+  .close{text-align:center;padding:110px 0 90px}
+  .close .botanic--close{position:relative;display:block;margin:0 auto 26px;width:82px}
+  .close h2{font-family:var(--serif);font-weight:300;font-size:clamp(44px,11vw,84px);line-height:1;margin-bottom:14px}
+  .close h2 em{font-style:italic}
+  .close p{color:var(--warm);font-family:var(--serif);font-style:italic;font-size:19px;margin-bottom:36px}
+  .cta-stack{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto}
+  .cta-stack .btn{width:100%}
+  .ig{
+    margin-top:30px;display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;
+    border-bottom:1px solid var(--ink);padding-bottom:4px;
+  }
+  .ig svg{width:15px;height:15px}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 32px}
+  .foot{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--warm)}
+  .foot strong{color:var(--ink);font-weight:500}
+
+  /* ---------- Animaciones ---------- */
+  .intro{opacity:0;transform:translateY(22px);animation:rise 1.2s var(--ease) forwards}
+  .d1{animation-delay:.15s}.d2{animation-delay:.35s}.d3{animation-delay:.55s}.d4{animation-delay:.75s}.d5{animation-delay:.5s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .hero-media.intro{transform:translateY(30px) scale(.98)}
+  .draw path,.draw circle,.draw ellipse{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600)}
+  .draw.on path,.draw.on circle,.draw.on ellipse{animation:draw 2.6s var(--ease) forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .g-item.reveal.in:nth-child(2n){transform:translateY(28px)}
+
+  /* ---------- Escritorio ---------- */
+  @media (min-width:760px){
+    :root{--gutter:48px}
+    .nav{height:80px}
+    .hero-grid{grid-template-columns:1.1fr .9fr;gap:64px}
+    .hero .sub{font-size:24px}
+    .gallery{grid-template-columns:repeat(3,1fr);gap:18px}
+    .g-item:nth-child(n){transform:none}
+    .g-item.reveal:nth-child(n){transform:translateY(34px)}
+    .g-item.reveal.in:nth-child(n){transform:none}
+    .g-item:nth-child(3n+2),.g-item.reveal.in:nth-child(3n+2){transform:translateY(48px)}
+    .hero-media{width:100%}
+    .section{padding:140px 0}
+    .steps{grid-template-columns:repeat(3,1fr);gap:40px}
+    .step{grid-template-columns:1fr;border-bottom:0;border-top:1px solid rgba(245,242,236,.18);padding:30px 0 0}
+    .step:first-child{border-top:1px solid rgba(245,242,236,.18)}
+    .botanic--hero{width:200px;right:-70px;top:-70px}
+    .botanic--hero-l{width:140px;left:-60px}
+    .cta-stack{flex-direction:row;max-width:none;justify-content:center}
+    .cta-stack .btn{width:auto;min-width:220px}
+    .foot{flex-direction:row;justify-content:space-between}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .intro,.reveal{opacity:1;transform:none}
+    .draw path,.draw circle,.draw ellipse{stroke-dashoffset:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- Ilustración botánica reutilizable -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sprig" viewBox="0 0 120 220">
+      <path d="M60 216 C58 170 62 120 58 70 C56 46 60 24 64 6"/>
+      <path d="M59 180 C40 172 26 160 18 140 C34 144 50 156 59 176"/>
+      <path d="M60 156 C78 146 92 132 98 112 C82 118 68 132 60 152"/>
+      <path d="M59 128 C42 120 32 106 28 88 C42 94 54 108 59 124"/>
+      <path d="M59 102 C74 94 84 80 86 64 C74 70 64 84 59 98"/>
+      <path d="M59 78 C48 70 42 58 42 44 C52 52 58 64 59 74"/>
+      <path d="M64 6 C56 12 54 22 58 30 C66 26 70 16 64 6"/>
+      <path d="M40 150 C36 148 30 146 26 146"/>
+      <path d="M80 126 C84 124 88 120 92 118"/>
+    </symbol>
+    <symbol id="bloom" viewBox="0 0 120 160">
+      <path d="M60 156 C60 120 58 96 60 70"/>
+      <path d="M60 70 C46 66 38 52 42 36 C50 46 56 54 60 70"/>
+      <path d="M60 70 C74 66 82 52 78 36 C70 46 64 54 60 70"/>
+      <path d="M60 70 C52 52 52 30 60 12 C68 30 68 52 60 70"/>
+      <path d="M60 120 C44 118 32 108 28 94 C42 96 54 106 60 118"/>
+      <path d="M60 104 C74 100 84 90 88 78 C76 80 66 90 60 102"/>
+      <circle cx="60" cy="72" r="2.2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo intro">Baru <i>Tattoo</i></a>
+    <a href="#turno" class="btn btn--sm intro d1">Pedir turno</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow intro d1">Tatuajes &amp; piercings</p>
+        <h1 class="intro d2">Líneas finas<br>que <em>florecen</em>.</h1>
+        <p class="sub intro d3">Fine line &amp; botanic · Villa Carlos Paz</p>
+        <a href="#turno" class="btn intro d4">Pedir turno</a>
+      </div>
+      <div class="hero-media intro d5">
+        <svg class="botanic botanic--hero draw" aria-hidden="true"><use href="#sprig"/></svg>
+        <div class="arch">
+          <div class="ph"><img src="assets/foto1.jpg" alt="Trabajo de Baru Tattoo"></div>
+        </div>
+        <span class="stamp">@baru.tattoo</span>
+        <svg class="botanic botanic--hero-l draw" aria-hidden="true"><use href="#bloom"/></svg>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="section" id="trabajos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Trabajos <em>recientes</em></h2>
+        <span class="num">i.</span>
+      </div>
+      <div class="gallery">
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto1.jpg" alt="Tatuaje fine line"></div><figcaption class="cap">Fine line</figcaption></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto2.jpg" alt="Tatuaje botánico"></div><figcaption class="cap">Botanic</figcaption></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto3.jpg" alt="Tatuaje fine line"></div><figcaption class="cap">Fine line</figcaption></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto4.jpg" alt="Tatuaje botánico"></div><figcaption class="cap">Botanic</figcaption></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto5.jpg" alt="Tatuaje fine line"></div><figcaption class="cap">Fine line</figcaption></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto6.jpg" alt="Piercing"></div><figcaption class="cap">Piercing</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="section steps-sec" id="turno">
+    <svg class="botanic botanic--steps draw" aria-hidden="true"><use href="#sprig"/></svg>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Cómo pedir <em>tu turno</em></h2>
+        <span class="num">ii.</span>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="n">01</span>
+          <div><h3>Escribime</h3><p>Mandame un mensaje por WhatsApp o Instagram contándome tu idea.</p></div>
+        </li>
+        <li class="step reveal">
+          <span class="n">02</span>
+          <div><h3>Contame los detalles</h3><p>Zona del cuerpo, tamaño aproximado y alguna referencia que te guste.</p></div>
+        </li>
+        <li class="step reveal">
+          <span class="n">03</span>
+          <div><h3>Coordinamos</h3><p>Armamos el diseño juntos y elegimos el día para tatuar.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="close" id="contacto">
+    <div class="wrap">
+      <svg class="botanic botanic--close draw" viewBox="0 0 120 160" aria-hidden="true"><use href="#bloom"/></svg>
+      <h2 class="reveal">Tu próxima<br><em>pieza</em> empieza acá.</h2>
+      <p class="reveal">Tatuajes y piercings en Villa Carlos Paz, Córdoba.</p>
+      <div class="cta-stack reveal">
+        <a href="#" class="btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.8c-.2 1-1.1 1.7-2.1 1.6A6.5 6.5 0 0 1 8.3 9.2C8.2 8.2 8.9 7.3 9.9 7.1l.8 1.8L9 9.5z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a href="#" class="btn btn--ghost">Gift Card</a>
+      </div>
+      <a href="#" class="ig reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>
+        @baru.tattoo
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Baru Tattoo · Lauti Barulich</span>
+    <span>Propuesta de diseño por <strong>Imnovalin</strong></span>
+  </div>
+</footer>
+
+<script>
+  // Imagen inexistente → bloque gris con etiqueta "FOTO"
+  document.querySelectorAll('.ph img').forEach(function(img){
+    function fail(){
+      var ph = img.closest('.ph'); ph.classList.add('missing');
+      var item = img.closest('.g-item'); if (item) item.classList.add('has-ph');
+    }
+    if (img.complete && img.naturalWidth === 0) fail();
+    img.addEventListener('error', fail);
+  });
+
+  // Copia las ilustraciones dentro de cada SVG (así se les puede animar el trazo)
+  document.querySelectorAll('svg.draw').forEach(function(svg){
+    var ref = svg.querySelector('use');
+    if (ref) {
+      var sym = document.querySelector(ref.getAttribute('href'));
+      svg.setAttribute('viewBox', sym.getAttribute('viewBox'));
+      svg.innerHTML = sym.innerHTML;
+    }
+    svg.querySelectorAll('path,circle,ellipse').forEach(function(p){
+      try { p.style.setProperty('--len', Math.ceil(p.getTotalLength()) + 2); } catch(e){}
+    });
+  });
+
+  // Header con línea al scrollear
+  var header = document.querySelector('header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, {passive:true});
+
+  // Animaciones al entrar en pantalla
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var sibs = el.parentElement ? Array.prototype.filter.call(el.parentElement.children, function(c){return c.classList.contains('reveal')}) : [];
+      var i = Math.max(0, sibs.indexOf(el));
+      el.style.transitionDelay = (el.classList.contains('g-item') || el.classList.contains('step') ? i * 0.12 : 0) + 's';
+      el.classList.add(el.classList.contains('draw') ? 'on' : 'in');
+      io.unobserve(el);
+    });
+  }, {threshold:.18, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal, .draw:not(.botanic--hero):not(.botanic--hero-l)').forEach(function(el){ io.observe(el); });
+
+  // Ilustraciones del hero se dibujan al cargar
+  setTimeout(function(){
+    document.querySelectorAll('.botanic--hero, .botanic--hero-l').forEach(function(s){ s.classList.add('on'); });
+  }, 600);
+</script>
+</body>
+</html>
