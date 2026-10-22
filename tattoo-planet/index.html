@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Tattoo Planet</title>
+<meta name="description" content="Tattoo Planet · Tatuajes & Piercing en Villa Carlos Paz. Propuesta de diseño.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,8 +15,9 @@
     --ink-2:#171615;
     --paper:#EDE6DA;
     --muted:#9A9288;
-    --red:#C8372D;
-    --gold:#C9A15A;
+    --accent:#6E5CC8;
+    --gold:#5FB3AC;
+    --grad:linear-gradient(100deg,#4FA8A2 0%,#6E8BC4 50%,#8A6CC8 100%);
     --line:rgba(237,230,218,.14);
     --ph:#1F1E1C;
     --display:"Anton", Impact, sans-serif;
@@ -44,10 +46,10 @@
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-    padding:16px 26px;background:var(--red);color:var(--paper);border:1px solid var(--red);
+    padding:16px 26px;background:var(--grad);color:#fff;border:1px solid transparent;
     transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease);
   }
-  .btn:hover{background:transparent;color:var(--red)}
+  .btn:hover{background:transparent;color:var(--paper);border-color:var(--gold)}
   .btn--sm{padding:10px 16px;font-size:10px}
   .btn--line{background:transparent;border-color:var(--paper);color:var(--paper)}
   .btn--line:hover{background:var(--paper);color:var(--ink)}
@@ -78,7 +80,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .hero .wrap{position:relative;z-index:2}
   .since{
-    display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+    display:inline-flex;align-items:center;gap:12px;font-size:10px;font-weight:500;letter-spacing:.24em;white-space:nowrap;text-transform:uppercase;color:var(--gold);
   }
   .since::before{content:"";width:30px;height:1px;background:var(--gold)}
   .hero h1{
@@ -94,15 +96,16 @@
   .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:16px 0;background:var(--ink)}
   .ticker-track{display:flex;width:max-content;animation:slide 26s linear infinite}
   .ticker span{font-family:var(--display);font-size:26px;text-transform:uppercase;letter-spacing:.04em;padding:0 22px;white-space:nowrap;display:flex;align-items:center;gap:44px}
-  .ticker span::after{content:"✦";font-family:var(--sans);font-size:13px;color:var(--red)}
+  .ticker span::after{content:"✦";font-family:var(--sans);font-size:13px;color:var(--accent)}
   .ticker span:nth-child(even){font-family:var(--serif);font-style:italic;text-transform:none;font-size:28px;color:var(--gold)}
+  .ticker span:nth-child(4n){color:#8F7FE0}
   @keyframes slide{to{transform:translateX(-50%)}}
 
   /* ---------- Secciones ---------- */
   .section{padding:96px 0;position:relative}
-  .kicker{font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block}
+  .kicker{font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
   h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(46px,12vw,96px);line-height:.92}
-  h2 em{font-family:var(--serif);font-style:italic;text-transform:none;font-weight:400;color:var(--gold);letter-spacing:0}
+  h2 em,.grad{font-family:var(--serif);font-style:italic;text-transform:none;font-weight:400;letter-spacing:0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
 
   /* Historia */
   .story-grid{display:grid;gap:40px}
@@ -112,14 +115,26 @@
   .stat{padding:22px 0 0}
   .stat + .stat{padding-left:20px;border-left:1px solid var(--line)}
   .stat b{display:block;font-family:var(--display);font-weight:400;font-size:56px;line-height:1;color:var(--paper)}
-  .stat b sup{font-size:.45em;color:var(--red);vertical-align:top;margin-left:2px}
+  .stat b sup{font-size:.45em;color:var(--accent);vertical-align:top;margin-left:2px}
   .stat small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
   .story-media{position:relative}
   .story-media .frame{aspect-ratio:4/5;border:1px solid var(--line);padding:10px}
   .story-media .tag{
-    position:absolute;right:-6px;top:24px;background:var(--red);color:var(--paper);
+    position:absolute;right:-6px;top:24px;background:var(--accent);color:var(--paper);
     font-family:var(--serif);font-style:italic;font-size:20px;padding:8px 16px;transform:rotate(3deg);
   }
+
+  /* Servicios */
+  .services{display:grid;gap:12px}
+  .svc{position:relative;display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:center;padding:22px;border:1px solid var(--line);background:var(--ink-2);transition:border-color .5s var(--ease)}
+  .svc:hover{border-color:rgba(95,179,172,.55)}
+  .svc .badge{width:76px;height:76px;border-radius:50%;padding:3px;background:var(--grad)}
+  .svc .badge span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:var(--ink);color:var(--paper)}
+  .svc .badge svg{width:34px;height:34px}
+  .svc h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:30px;line-height:1;letter-spacing:.02em}
+  .svc p{color:rgba(237,230,218,.66);font-size:14px;margin-top:4px}
+  .svc .arrow{position:absolute;right:20px;top:20px;font-size:18px;color:var(--gold);transition:transform .5s var(--ease)}
+  .svc:hover .arrow{transform:translate(3px,-3px)}
 
   /* Galería */
   .gal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:36px}
@@ -133,15 +148,15 @@
     position:absolute;left:12px;top:10px;font-family:var(--display);font-size:16px;color:var(--paper);
     mix-blend-mode:difference;opacity:.9;
   }
-  .g-item::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 var(--red);transition:box-shadow .5s var(--ease);pointer-events:none}
-  .g-item:hover::after{box-shadow:inset 0 0 0 2px var(--red)}
+  .g-item::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 var(--accent);transition:box-shadow .5s var(--ease);pointer-events:none}
+  .g-item:hover::after{box-shadow:inset 0 0 0 2px var(--accent)}
 
   /* Pasos */
   .steps-sec{background:var(--paper);color:var(--ink)}
-  .steps-sec h2 em{color:var(--red)}
+  .steps-sec h2 em{background:linear-gradient(100deg,#2F8C86,#5B47B8);-webkit-background-clip:text;background-clip:text}
   .steps{list-style:none;margin-top:40px;border-top:2px solid var(--ink)}
   .step{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:26px 0;border-bottom:1px solid rgba(14,14,14,.18)}
-  .step .num{font-family:var(--display);font-size:46px;line-height:.9;color:var(--red)}
+  .step .num{font-family:var(--display);font-size:46px;line-height:.9;color:var(--accent)}
   .step h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:26px;letter-spacing:.02em;line-height:1.05;margin-bottom:6px}
   .step p{color:rgba(14,14,14,.7);font-size:14px;max-width:36ch}
 
@@ -192,6 +207,8 @@
     .hero .sub{font-size:30px}
     .section{padding:140px 0}
     .story-grid{grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+    .services{grid-template-columns:1fr 1fr;gap:18px}
+    .svc{padding:34px}
     .gallery{grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(240px,26vw,340px);gap:14px}
     .g-item{aspect-ratio:auto}
     .g-item:nth-child(6){grid-column:span 2}
@@ -242,9 +259,9 @@
     <div class="hero-bg"><div class="ph"><img src="assets/hero.jpg" alt=""></div></div>
     <svg class="planet hero-planet" aria-hidden="true"><use href="#planet"/></svg>
     <div class="wrap">
-      <span class="since intro d1">Villa Carlos Paz · Desde 1995</span>
+      <span class="since intro d1">Carlos Paz · Tattoo &amp; Piercing</span>
       <h1><span class="line"><span>Tattoo</span></span><span class="line"><span class="outline">Planet</span></span></h1>
-      <p class="sub intro d3">Tres décadas dejando huella. <span>Un oficio que pasa de generación en generación.</span></p>
+      <p class="sub intro d3">Más de 25 años dejando huella. <span>Un oficio que pasa de generación en generación.</span></p>
       <div class="hero-ctas intro d4">
         <a href="#turno" class="btn">Pedir turno</a>
         <a href="#trabajos" class="btn btn--line">Ver trabajos</a>
@@ -254,8 +271,8 @@
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Desde 1995</span><span>hecho a mano</span><span>Villa Carlos Paz</span><span>diseños a medida</span><span>Oficio de familia</span><span>tu historia en la piel</span>
-      <span>Desde 1995</span><span>hecho a mano</span><span>Villa Carlos Paz</span><span>diseños a medida</span><span>Oficio de familia</span><span>tu historia en la piel</span>
+      <span>+25 años</span><span>tatuajes &amp; piercing</span><span>Villa Carlos Paz</span><span>hecho a mano</span><span>Oficio de familia</span><span>tu historia en la piel</span>
+      <span>+25 años</span><span>tatuajes &amp; piercing</span><span>Villa Carlos Paz</span><span>hecho a mano</span><span>Oficio de familia</span><span>tu historia en la piel</span>
     </div>
   </div>
 
@@ -265,15 +282,35 @@
       <div class="story-text">
         <span class="kicker reveal">La historia</span>
         <h2 class="reveal">Un oficio <em>de familia</em></h2>
-        <p class="reveal"><strong>Uogi</strong> agarró la máquina por primera vez a los 14 años, aprendiendo de su papá. Desde 1995 Tattoo Planet tatúa en Carlos Paz, y hoy esa pasión se la transmite a sus hijos.</p>
+        <p class="reveal"><strong>Jorge L. Raineri</strong> empezó a tatuar a los 14 años, aprendiendo de su papá. Hoy, con más de 25 años de experiencia, está al frente de Tattoo Planet y le transmite el oficio a sus hijos.</p>
         <div class="stats reveal">
-          <div class="stat"><b data-count="30">0<sup>+</sup></b><small>Años tatuando</small></div>
-          <div class="stat"><b>1995</b><small>Abrió el estudio</small></div>
+          <div class="stat"><b data-count="25">0<sup>+</sup></b><small>Años de experiencia</small></div>
+          <div class="stat"><b>14</b><small>Años tenía cuando empezó</small></div>
         </div>
       </div>
       <div class="story-media reveal">
-        <div class="frame"><div class="ph"><img src="assets/historia.jpg" alt="Uogi tatuando en Tattoo Planet"></div></div>
-        <span class="tag">desde 1995</span>
+        <div class="frame"><div class="ph"><img src="assets/historia.jpg" alt="Jorge L. Raineri tatuando en Tattoo Planet"></div></div>
+        <span class="tag">+25 años</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <span class="kicker reveal">Estudio</span>
+      <h2 class="reveal" style="margin-bottom:36px">Tattoo <em>&amp;</em> Piercing</h2>
+      <div class="services">
+        <a href="#turno" class="svc reveal">
+          <span class="badge"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M14.5 4.5l5 5"/><path d="M13 6l5 5-7.5 7.5H5.5v-5z"/><path d="M5.5 18.5L3 21"/><path d="M9 10l5 5"/></svg></span></span>
+          <div><h3>Tatuajes</h3><p>Diseños a medida para tu idea, de lo más chico a piezas grandes.</p></div>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="#turno" class="svc reveal">
+          <span class="badge"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M17 8.5a6 6 0 1 1-8.2-1.7"/><circle cx="9.6" cy="5.4" r="1.6"/><circle cx="17.2" cy="8.4" r="1.6"/></svg></span></span>
+          <div><h3>Piercing</h3><p>Perforaciones en el estudio, con turno previo.</p></div>
+          <span class="arrow">↗</span>
+        </a>
       </div>
     </div>
   </section>
@@ -303,8 +340,8 @@
       <h2 class="reveal">Cómo pedir <em>tu turno</em></h2>
       <ol class="steps">
         <li class="step reveal"><span class="num">01</span><div><h3>Escribinos</h3><p>Mandanos un mensaje por WhatsApp con tu idea.</p></div></li>
-        <li class="step reveal"><span class="num">02</span><div><h3>Contanos tu idea</h3><p>Zona del cuerpo, tamaño aproximado y alguna referencia que te guste.</p></div></li>
-        <li class="step reveal"><span class="num">03</span><div><h3>Reservamos el día</h3><p>Ajustamos el diseño juntos y coordinamos la fecha para tatuar.</p></div></li>
+        <li class="step reveal"><span class="num">02</span><div><h3>Contanos tu idea</h3><p>Tatuaje o piercing: zona, tamaño aproximado y alguna referencia que te guste.</p></div></li>
+        <li class="step reveal"><span class="num">03</span><div><h3>Reservamos el día</h3><p>Coordinamos los detalles y la fecha de tu turno.</p></div></li>
       </ol>
     </div>
   </section>
@@ -313,8 +350,8 @@
   <section class="close">
     <div class="wrap">
       <svg class="planet reveal" aria-hidden="true"><use href="#planet"/></svg>
-      <h2 class="reveal">Tu próximo<br><em>tatuaje</em> empieza acá</h2>
-      <p class="reveal">Más de 30 años de oficio en Villa Carlos Paz.</p>
+      <h2 class="reveal">Tu próxima<br><em>marca</em> empieza acá</h2>
+      <p class="reveal">Más de 25 años de oficio en Villa Carlos Paz.</p>
       <div class="cta-stack reveal">
         <a href="#" class="btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.8c-.2 1-1.1 1.7-2.1 1.6A6.5 6.5 0 0 1 8.3 9.2C8.2 8.2 8.9 7.3 9.9 7.1l.8 1.8L9 9.5z"/></svg>
@@ -332,7 +369,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span>Tattoo Planet · Villa Carlos Paz</span>
+    <span>Tattoo Planet · Tatuajes &amp; Piercing</span>
     <span>Propuesta de diseño por <strong>Imnovalin</strong></span>
   </div>
 </footer>
