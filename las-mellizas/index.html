@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cabañas de las Mellizas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#8B2A2A;
+    --wine-dark:#5E1B1B;
+    --cream:#F6EFE6;
+    --sand:#EADBC8;
+    --tan:#B98E6A;
+    --brown:#2B1E1A;
+    --muted:#7D6A5E;
+    --wa:#25D366;
+    --line:rgba(43,30,26,.12);
+    --ph:#E3D3BF;
+    --display:"Bebas Neue", Impact, sans-serif;
+    --script:"Caveat", cursive;
+    --sans:"Inter", system-ui, -apple-system, sans-serif;
+    --gutter:20px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{overflow-x:clip;background:var(--cream);color:var(--brown);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+
+  /* ---------- Botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    padding:15px 24px;border-radius:999px;background:var(--wine);color:#fff;border:1.5px solid var(--wine);
+    transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(139,42,42,.6)}
+  .btn--light{background:var(--cream);color:var(--wine);border-color:var(--cream)}
+  .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+  .btn--ghost:hover{background:#fff;color:var(--wine)}
+  .btn--sm{padding:10px 16px;font-size:11px}
+  .btn svg{width:18px;height:18px;flex:none}
+
+  /* ---------- Cinta promo ---------- */
+  .promo-bar{position:fixed;inset:0 0 auto 0;z-index:30;height:34px;background:var(--wine-dark);color:var(--cream);overflow:hidden;display:flex;align-items:center}
+  .promo-track{display:flex;width:max-content;animation:slide 22s linear infinite}
+  .promo-track span{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:0 22px;white-space:nowrap;display:flex;align-items:center;gap:44px}
+  .promo-track span::after{content:"♥";color:var(--tan);font-size:10px}
+  .promo-track b{color:#fff;background:var(--wine);padding:2px 8px;border-radius:4px;margin-right:6px}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- Header ---------- */
+  header{position:fixed;inset:34px 0 auto 0;z-index:20;transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+  header.scrolled{background:rgba(246,239,230,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;transition:color .5s var(--ease)}
+  header.scrolled .logo{color:var(--brown)}
+  .logo .mark{width:38px;height:38px;flex:none}
+  .logo strong{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em;line-height:1;display:block}
+  .logo em{font-family:var(--script);font-style:normal;font-size:16px;line-height:1;color:var(--tan);display:block}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:150px 0 64px}
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg .ph{transform:scale(1.08);animation:zoom 14s var(--ease) forwards}
+  @keyframes zoom{to{transform:scale(1)}}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,30,26,.55) 0%,rgba(43,30,26,.15) 40%,rgba(43,30,26,.85) 100%)}
+  .hero .wrap{position:relative;z-index:2}
+  .hero .hello{font-family:var(--script);font-size:30px;color:var(--sand);display:flex;align-items:center;gap:8px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(64px,19vw,168px);line-height:.88;letter-spacing:.01em;margin:6px 0 10px}
+  .hero h1 .line{display:block;overflow:hidden;padding-top:.12em;margin-top:-.12em}
+  .hero h1 .line span{display:block;transform:translateY(105%);animation:up 1s var(--ease) forwards}
+  .hero h1 .line:nth-child(2) span{animation-delay:.12s}
+  @keyframes up{to{transform:none}}
+  .hero .sub{font-size:16px;color:rgba(255,255,255,.86);max-width:34ch;margin-bottom:26px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:10px}
+  .hero-badge{
+    position:absolute;z-index:3;right:16px;top:118px;width:118px;height:118px;border-radius:50%;
+    background:var(--wine);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 0 0 6px rgba(246,239,230,.25);transform:rotate(-10deg);animation:pop .9s var(--ease) 1s both;
+  }
+  .hero-badge b{font-family:var(--display);font-weight:400;font-size:46px;line-height:.85}
+  .hero-badge small{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
+  @keyframes pop{from{opacity:0;transform:rotate(-30deg) scale(.4)}to{opacity:1;transform:rotate(-10deg) scale(1)}}
+  .hero-badge::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(255,255,255,.5);border-radius:50%}
+
+  /* ---------- Secciones ---------- */
+  .section{padding:88px 0;position:relative}
+  .eyebrow{font-family:var(--script);font-size:26px;color:var(--wine);line-height:1;display:block;margin-bottom:6px}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(46px,12vw,84px);line-height:.92;letter-spacing:.01em}
+  .lead{color:var(--muted);max-width:44ch;margin-top:14px}
+
+  /* Promo */
+  .promo{padding:28px 0 0}
+  .promo-card{
+    position:relative;overflow:hidden;border-radius:22px;background:var(--wine);color:#fff;
+    padding:34px 26px;display:grid;gap:18px;
+  }
+  .promo-card::before{
+    content:"";position:absolute;right:-60px;bottom:-40px;width:260px;height:180px;opacity:.14;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' fill='none' stroke='white' stroke-width='3' stroke-linejoin='round'%3E%3Cpath d='M4 58 L34 10 L48 32 L62 4 L96 58'/%3E%3C/svg%3E") no-repeat center/contain;
+  }
+  .promo-card .big{font-family:var(--display);font-weight:400;font-size:clamp(96px,30vw,180px);line-height:.8;letter-spacing:-.01em}
+  .promo-card .big sup{font-size:.4em;vertical-align:top;margin-left:4px}
+  .promo-card h3{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;letter-spacing:.02em}
+  .promo-card h3 em{font-family:var(--script);font-style:normal;font-size:32px;color:var(--sand);letter-spacing:0}
+  .promo-card p{color:rgba(255,255,255,.8);font-size:14px;max-width:36ch;margin-top:6px}
+  .promo-card .btn{justify-self:start;position:relative}
+
+  /* Comodidades */
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:36px}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 16px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+  .feat:hover{transform:translateY(-4px);box-shadow:0 18px 30px -20px rgba(43,30,26,.35)}
+  .feat .ico{width:46px;height:46px;border-radius:50%;background:var(--sand);color:var(--wine);display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 0 0 3px var(--cream),0 0 0 4px var(--tan)}
+  .feat .ico svg{width:22px;height:22px}
+  .feat h3{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.05;letter-spacing:.02em}
+  .feat p{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+  /* Galería */
+  .gal-sec{background:var(--brown);color:var(--cream);overflow:hidden}
+  .gal-sec .eyebrow{color:var(--tan)}
+  .gal-head{display:flex;flex-direction:column;gap:6px;margin-bottom:34px}
+  .gal-head .note{font-family:var(--script);font-size:28px;color:var(--sand);transform:rotate(-3deg);align-self:flex-start;margin-top:6px}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;gap:8px}
+  .g-item{position:relative;overflow:hidden;border-radius:14px}
+  .g-item.big{grid-column:span 2;grid-row:span 2}
+  .g-item.tall{grid-row:span 2}
+  .g-item .ph img{transition:transform 1.2s var(--ease)}
+  .g-item:hover .ph img{transform:scale(1.06)}
+
+  /* Reservas + chat */
+  .book{display:grid;gap:44px;align-items:center}
+  .steps{list-style:none;margin-top:28px;display:grid;gap:14px}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+  .step .n{width:44px;height:44px;border-radius:50%;background:var(--wine);color:#fff;font-family:var(--display);font-size:22px;display:flex;align-items:center;justify-content:center}
+  .step h3{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.02em;line-height:1.1}
+  .step p{font-size:14px;color:var(--muted)}
+  .pay{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+  .pay span{font-size:12px;font-weight:500;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
+  .pay span.hot{background:var(--wine);color:#fff;border-color:var(--wine)}
+
+  .phone{
+    position:relative;justify-self:center;width:100%;max-width:330px;border-radius:38px;background:var(--brown);padding:10px;
+    box-shadow:0 40px 60px -30px rgba(43,30,26,.55);transform:rotate(2deg);
+  }
+  .screen{border-radius:30px;overflow:hidden;background:#EFE6DA}
+  .chat-top{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;background:#fff;border-bottom:1px solid var(--line)}
+  .chat-top .av{width:34px;height:34px;border-radius:50%;background:var(--wine);display:flex;align-items:center;justify-content:center}
+  .chat-top .av svg{width:20px;height:20px}
+  .chat-top b{font-size:13px;display:block;line-height:1.2}
+  .chat-top small{font-size:11px;color:#3aa457}
+  .chat{padding:18px 12px 22px;display:flex;flex-direction:column;gap:8px;min-height:300px;
+    background-image:radial-gradient(rgba(139,42,42,.07) 1px,transparent 1px);background-size:14px 14px}
+  .day{align-self:center;font-size:10px;background:#fff;padding:3px 10px;border-radius:6px;color:var(--muted);margin-bottom:4px}
+  .msg{max-width:80%;font-size:13px;line-height:1.4;padding:8px 11px 16px;border-radius:12px;position:relative;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .msg time{position:absolute;right:8px;bottom:3px;font-size:9px;color:var(--muted)}
+  .msg.in-msg{align-self:flex-start;background:#fff;border-top-left-radius:4px}
+  .msg.out{align-self:flex-end;background:#DCF3C8;border-top-right-radius:4px}
+  .chat.play .msg{opacity:1;transform:none}
+  .chat.play .msg:nth-of-type(2){transition-delay:.9s}
+  .chat.play .msg:nth-of-type(3){transition-delay:1.8s}
+  .chat.play .msg:nth-of-type(4){transition-delay:2.7s}
+  .typing{align-self:flex-start;background:#fff;border-radius:12px;padding:10px 12px;display:flex;gap:4px;opacity:0;transition:opacity .3s}
+  .typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1s infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes blink{50%{opacity:.25}}
+  .chat.play .typing{animation:typing 3.6s steps(1) forwards}
+  @keyframes typing{0%{opacity:0}5%{opacity:1}22%{opacity:0}48%{opacity:1}72%{opacity:0;height:0;padding:0;margin:-4px 0}100%{opacity:0;height:0;padding:0;margin:-4px 0}}
+  .phone .sticker{position:absolute;left:-14px;bottom:-26px;font-family:var(--script);font-size:26px;line-height:1.05;color:var(--wine);background:var(--cream);padding:8px 14px;border-radius:12px;transform:rotate(-6deg);box-shadow:0 10px 20px -12px rgba(43,30,26,.4)}
+
+  /* Ubicación */
+  .loc{background:var(--sand)}
+  .loc-grid{display:grid;gap:34px;align-items:center}
+  .map{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#F1E6D7;border:1px solid var(--line)}
+  .map svg{width:100%;height:100%}
+  .map .roads path{fill:none;stroke:#fff;stroke-linecap:round}
+  .map .pin{position:absolute;left:58%;top:44%;transform:translate(-50%,-100%);animation:bob 2.4s ease-in-out infinite}
+  .map .pin svg{width:44px;height:54px}
+  @keyframes bob{50%{transform:translate(-50%,-112%)}}
+  .map .label{position:absolute;left:58%;top:44%;transform:translate(-50%,10px);background:var(--wine);color:#fff;font-size:11px;font-weight:600;padding:6px 10px;border-radius:999px;white-space:nowrap}
+  .addr{font-family:var(--display);font-size:30px;letter-spacing:.02em;margin-top:18px;line-height:1}
+  .addr small{display:block;font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:0;margin-top:6px}
+  .near{margin-top:20px;display:grid;gap:10px}
+  .near li{list-style:none;display:flex;align-items:center;gap:10px;font-size:14px}
+  .near li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 4px rgba(139,42,42,.15)}
+
+  /* Cierre */
+  .close{background:var(--wine);color:#fff;text-align:center;padding:96px 0 84px;position:relative;overflow:hidden}
+  .close .mark{width:70px;height:70px;margin:0 auto 18px;display:block;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.7),0 0 0 8px rgba(255,255,255,.12)}
+  .close .eyebrow{color:var(--sand)}
+  .close h2{margin-bottom:12px}
+  .close p{color:rgba(255,255,255,.8);max-width:34ch;margin:0 auto 30px}
+  .cta-stack{display:flex;flex-direction:column;gap:10px;max-width:340px;margin:0 auto}
+  .cta-stack .btn{width:100%}
+  .ig{margin-top:26px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:3px}
+  .ig svg{width:16px;height:16px}
+  .close .peaks{position:absolute;left:0;right:0;bottom:-2px;width:100%;height:90px;opacity:.12}
+
+  footer{background:var(--wine-dark);color:rgba(246,239,230,.7);padding:22px 0 28px}
+  .foot{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .foot strong{color:#fff;font-weight:600}
+
+  /* Placeholders */
+  .ph{position:relative;width:100%;height:100%;background:var(--ph);overflow:hidden}
+  .ph::after{content:"FOTO";position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:10px;font-weight:600;letter-spacing:.4em;color:var(--muted)}
+  .ph.missing::after{display:flex}
+  .ph.missing img{display:none}
+  .gal-sec .ph{background:#3A2B25}
+  .gal-sec .ph::after{color:rgba(246,239,230,.45)}
+  .hero-bg .ph.missing{background:radial-gradient(120% 80% at 70% 15%,#B5876A 0%,#7A4A3A 45%,#3A2620 100%)}
+  .hero-bg .ph.missing::after{display:none}
+
+  /* ---------- Animaciones ---------- */
+  .intro{opacity:0;transform:translateY(20px);animation:rise 1s var(--ease) forwards}
+  .d1{animation-delay:.1s}.d2{animation-delay:.3s}.d3{animation-delay:.5s}.d4{animation-delay:.7s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Escritorio ---------- */
+  @media (min-width:760px){
+    :root{--gutter:44px}
+    .nav{height:78px}
+    .hero{align-items:center}
+    .hero .sub{font-size:18px}
+    .hero-badge{width:170px;height:170px;right:8%;top:auto;bottom:16%}
+    .hero-badge b{font-size:70px}
+    .hero-badge small{font-size:11px}
+    .section{padding:120px 0}
+    .promo-card{grid-template-columns:auto 1fr auto;align-items:center;gap:40px;padding:44px 52px}
+    .promo-card .btn{justify-self:end}
+    .features{grid-template-columns:repeat(3,1fr);gap:16px}
+    .feat{padding:28px 24px}
+    .feat h3{font-size:26px}
+    .feat p{font-size:14px}
+    .gal-head{flex-direction:row;align-items:flex-end;justify-content:space-between}
+    .gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+    .g-item.big{grid-column:span 2;grid-row:span 2}
+    .g-item:nth-child(5),.g-item:nth-child(6){grid-column:span 2}
+    .book{grid-template-columns:1.1fr .9fr;gap:70px}
+    .loc-grid{grid-template-columns:.9fr 1.1fr;gap:70px}
+    .cta-stack{flex-direction:row;justify-content:center;max-width:none}
+    .cta-stack .btn{width:auto;min-width:240px}
+    .foot{flex-direction:row;justify-content:space-between}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .intro,.reveal,.msg,.hero h1 .line span{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo: montañas sobre círculo bordó -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="50" fill="#8B2A2A"/>
+      <path d="M20 66 C28 52 36 40 44 28 C46 40 50 50 58 62 C52 54 48 48 44 40 C38 50 30 58 20 66Z" fill="#fff"/>
+      <path d="M46 44 C52 36 56 30 60 24 C62 36 70 52 80 70 C70 58 64 48 60 36 C56 42 52 46 46 44Z" fill="#fff"/>
+      <path d="M57 26 L62 18 L60 30Z" fill="#fff"/>
+    </symbol>
+    <symbol id="wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.36A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.8.82-3-.2-.31a8.2 8.2 0 1 1 6.96 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.13-.16.24-.63.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42l-.75-1.82c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.04 4.8 4.8 0 0 0 1 2.53 10.9 10.9 0 0 0 4.2 3.7c1.55.67 2.16.73 2.94.61.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.15-1.17-.06-.11-.22-.17-.46-.3Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="promo-bar" aria-label="Promoción">
+  <div class="promo-track">
+    <span><b>50% OFF</b> pagando en efectivo</span><span>Cabañas en Villa Carlos Paz</span><span>Piscina · Cochera · Equipadas</span><span><b>50% OFF</b> pagando en efectivo</span><span>Reservas por WhatsApp</span><span>Como en tu casa</span>
+    <span><b>50% OFF</b> pagando en efectivo</span><span>Cabañas en Villa Carlos Paz</span><span>Piscina · Cochera · Equipadas</span><span><b>50% OFF</b> pagando en efectivo</span><span>Reservas por WhatsApp</span><span>Como en tu casa</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo intro"><svg class="mark"><use href="#mark"/></svg><span><strong>Cabañas de las Mellizas</strong><em>Como en tu casa ♡</em></span></a>
+    <a href="#reservar" class="btn btn--sm intro d1">Reservar</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><div class="ph"><img src="assets/hero.jpg" alt=""></div></div>
+    <div class="hero-badge" aria-hidden="true"><b>50%</b><small>off pagando<br>en efectivo</small></div>
+    <div class="wrap">
+      <span class="hello intro d1">Mate, manta y tranquilidad ♡</span>
+      <h1><span class="line"><span>Cabañas de</span></span><span class="line"><span>las Mellizas</span></span></h1>
+      <p class="sub intro d2">Cabañas céntricas en Villa Carlos Paz, ideales para familias y parejas. Piscina, cochera y todo el confort.</p>
+      <div class="hero-ctas intro d3">
+        <a href="#" class="btn"><svg><use href="#wa"/></svg>Consultar disponibilidad</a>
+        <a href="#cabanas" class="btn btn--ghost">Ver cabañas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="promo">
+    <div class="wrap">
+      <div class="promo-card reveal">
+        <div class="big">50<sup>%</sup></div>
+        <div>
+          <h3>Off pagando en efectivo <em>¡aprovechala!</em></h3>
+          <p>Reservá tu cabaña y, abonando en efectivo, pagás la mitad. Consultanos por WhatsApp.</p>
+        </div>
+        <a href="#" class="btn btn--light"><svg><use href="#wa"/></svg>Quiero la promo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMODIDADES -->
+  <section class="section" id="cabanas">
+    <div class="wrap">
+      <span class="eyebrow reveal">Por qué alojarte con nosotros</span>
+      <h2 class="reveal">Todo lo que necesitás<br>para descansar</h2>
+      <div class="features">
+        <div class="feat reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
+          <h3>Familias y parejas</h3><p>Cabañas pensadas para que estés como en tu casa.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 21c2 0 2-1.5 4-1.5S8 21 10 21s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M8 14V5a2 2 0 0 1 4 0"/><path d="M16 14V5a2 2 0 0 0-4 0"/><path d="M8 8h8M8 11h8"/></svg></div>
+          <h3>Piscina y solárium</h3><p>Para disfrutar al sol en temporada.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9"/><path d="M3 14h18"/><path d="M7 11h3"/><path d="M3 18v2M21 18v2"/></svg></div>
+          <h3>Equipadas</h3><p>Calefacción, ropa de cama y más.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-4l-2-5H7l-2 5z"/><path d="M5 13h14"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg></div>
+          <h3>Cochera</h3><p>Tu auto guardado y tranquilo.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <h3>Cerca de todo</h3><p>Céntricas, cerquita de la peatonal.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Atención personal</h3><p>Atención personalizada, de la consulta a la despedida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="section gal-sec">
+    <div class="wrap">
+      <div class="gal-head">
+        <div><span class="eyebrow reveal">Conocé las cabañas</span><h2 class="reveal">Tu escapada<br>en Carlos Paz</h2></div>
+        <span class="note reveal">hay inviernos… y hay inviernos<br>bajo las frazadas de una cabaña ♡</span>
+      </div>
+      <div class="gallery">
+        <figure class="g-item big reveal"><div class="ph"><img src="assets/foto1.jpg" alt="Cabaña"></div></figure>
+        <figure class="g-item tall reveal"><div class="ph"><img src="assets/foto2.jpg" alt="Piscina"></div></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto3.jpg" alt="Interior de la cabaña"></div></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto4.jpg" alt="Habitación"></div></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto5.jpg" alt="Parque"></div></figure>
+        <figure class="g-item reveal"><div class="ph"><img src="assets/foto6.jpg" alt="Villa Carlos Paz"></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAS -->
+  <section class="section" id="reservar">
+    <div class="wrap book">
+      <div>
+        <span class="eyebrow reveal">Consultas y reservas</span>
+        <h2 class="reveal">Reservar es<br>así de fácil</h2>
+        <ol class="steps">
+          <li class="step reveal"><span class="n">1</span><div><h3>Escribinos por WhatsApp</h3><p>Contanos las fechas y cuántas personas son.</p></div></li>
+          <li class="step reveal"><span class="n">2</span><div><h3>Te confirmamos</h3><p>Te pasamos disponibilidad y la cabaña ideal para ustedes.</p></div></li>
+          <li class="step reveal"><span class="n">3</span><div><h3>¡A disfrutar!</h3><p>Reservás y solo queda armar el bolso.</p></div></li>
+        </ol>
+        <div class="pay reveal">
+          <span class="hot">50% off en efectivo</span><span>Varios métodos de pago</span><span>Atención personalizada</span>
+        </div>
+      </div>
+      <div class="phone reveal">
+        <div class="screen">
+          <div class="chat-top">
+            <span class="av"><svg><use href="#mark"/></svg></span>
+            <div><b>Cabañas de las Mellizas</b><small>en línea</small></div>
+          </div>
+          <div class="chat" id="chat">
+            <span class="day">Hoy</span>
+            <div class="msg out">¡Hola! ¿Tienen disponibilidad para el finde? 🙌<time>10:32</time></div>
+            <div class="msg in-msg">¡Hola! Sí 😊 ¿Cuántas personas son?<time>10:33</time></div>
+            <div class="msg out">Somos 4, ¿tiene pileta?<time>10:33</time></div>
+            <div class="msg in-msg">¡Sí! Y pagando en efectivo tenés 50% off ♡<time>10:34</time></div>
+            <div class="typing"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <span class="sticker">el mensaje<br>más lindo ♡</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="section loc">
+    <div class="wrap loc-grid">
+      <div>
+        <span class="eyebrow reveal">Ubicación</span>
+        <h2 class="reveal">Cerquita<br>de todo</h2>
+        <p class="addr reveal">Tupungato 771<small>Villa Carlos Paz, Córdoba</small></p>
+        <ul class="near reveal">
+          <li>Ubicación cómoda y céntrica</li>
+          <li>Cerquita de la peatonal</li>
+          <li>Cochera para tu auto</li>
+        </ul>
+      </div>
+      <div class="map reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#F1E6D7"/>
+          <path d="M-20 250 C80 230 120 270 220 250 S360 220 420 240 L420 320 L-20 320Z" fill="#BFD6D2"/>
+          <g fill="#E6D6C1">
+            <rect x="30" y="30" width="70" height="50" rx="6"/><rect x="120" y="30" width="90" height="50" rx="6"/><rect x="290" y="20" width="80" height="70" rx="6"/>
+            <rect x="30" y="110" width="70" height="70" rx="6"/><rect x="250" y="120" width="60" height="50" rx="6"/><rect x="330" y="120" width="60" height="80" rx="6"/>
+            <rect x="120" y="170" width="70" height="40" rx="6"/>
+          </g>
+          <circle cx="160" cy="125" r="22" fill="#CFDDB8"/>
+          <g class="roads">
+            <path d="M0 95 C120 100 260 90 400 105" stroke-width="12"/>
+            <path d="M225 0 C230 90 220 200 240 300" stroke-width="12"/>
+            <path d="M0 195 C80 190 160 215 400 210" stroke-width="8"/>
+            <path d="M110 0 L115 300" stroke-width="7"/>
+          </g>
+          <path d="M120 98 C160 100 200 96 228 98" stroke="#8B2A2A" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="pin"><svg viewBox="0 0 44 54"><path d="M22 53s18-17 18-31A18 18 0 0 0 4 22c0 14 18 31 18 31z" fill="#8B2A2A"/><circle cx="22" cy="22" r="11" fill="#fff"/><use href="#mark" x="13" y="13" width="18" height="18"/></svg></span>
+        <span class="label">Cabañas de las Mellizas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="close">
+    <div class="wrap">
+      <svg class="mark reveal"><use href="#mark"/></svg>
+      <span class="eyebrow reveal">te esperamos</span>
+      <h2 class="reveal">Reservá tu escapada</h2>
+      <p class="reveal">Escribinos y armamos juntos tu estadía en Villa Carlos Paz. ¡Recordá: 50% off pagando en efectivo!</p>
+      <div class="cta-stack reveal">
+        <a href="#" class="btn btn--light"><svg><use href="#wa"/></svg>Consultar por WhatsApp</a>
+        <a href="#" class="btn btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".7" fill="currentColor"/></svg>
+          @delasmellizas_vcp
+        </a>
+      </div>
+    </div>
+    <svg class="peaks" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90 L60 30 L95 60 L150 10 L210 70 L250 40 L300 80 L350 20 L400 60 L400 90Z" fill="#fff"/></svg>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Cabañas de las Mellizas · Villa Carlos Paz</span>
+    <span>Propuesta de diseño por <strong>Imnovalin</strong></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.ph img').forEach(function(img){
+    function fail(){ img.closest('.ph').classList.add('missing'); }
+    if (img.complete && img.naturalWidth === 0) fail();
+    img.addEventListener('error', fail);
+  });
+
+  var header = document.querySelector('header');
+  function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      if (el.classList.contains('feat') || el.classList.contains('g-item') || el.classList.contains('step')) {
+        var sibs = Array.prototype.slice.call(el.parentElement.children);
+        el.style.transitionDelay = (sibs.indexOf(el) * 0.08) + 's';
+      }
+      el.classList.add('in');
+      if (el.classList.contains('phone')) document.getElementById('chat').classList.add('play');
+      io.unobserve(el);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
